@@ -1,0 +1,370 @@
+---
+#
+---
+
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin inline-flex() {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+@mixin flex($values) {
+  -webkit-box-flex: $values;
+  -moz-box-flex:  $values;
+  -webkit-flex:  $values;
+  -ms-flex:  $values;
+  flex:  $values;
+}
+
+@mixin order($val) {
+  -webkit-box-ordinal-group: $val;
+  -moz-box-ordinal-group: $val;
+  -ms-flex-order: $val;
+  -webkit-order: $val;
+  order: $val;
+}
+
+@mixin flex-wrap($wrap) {
+  -webkit-flex-wrap: $wrap;
+  -moz-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+
+@mixin justifyContent($justify) {
+  -webkit-justify-content: $justify;
+  -moz-justify-content: $justify;
+  -ms-justify-content: $justify;
+  justify-content: $justify;
+  -ms-flex-pack: $justify;
+}
+
+$white: #ffffff;
+$blue--900: #1C2F4C;
+$blue--400: #203D6A;
+$gold--400: #FFC700;
+
+
+
+@mixin desktop {
+  @media only screen and (max-width: 60em) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (max-width: 40em) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: 30em) {
+    @content;
+  }
+}
+
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+*,
+*:after,
+*:before {
+  font-size: 18px;
+  line-height: 23px;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	-webkit-font-smoothing:antialiased;
+	font-smoothing:antialiased;
+	text-rendering:optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: $white;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1rem;
+  line-height: 1.2777778rem;
+}
+
+h1, .h1 {
+  display: block;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 2rem;
+  line-height: 2.5555556rem;
+  margin-bottom: 2.5555556rem;
+  margin-top: 1.2777778rem;
+}
+
+h2, .h2 {
+  font-size: 2.6111111rem;
+  line-height: 3.8333333rem;
+  margin-top: 1.2777778rem;
+  margin-bottom: 1.2777778rem;
+}
+
+h3, .h3 {
+  font-size: 1.6111111rem;
+  line-height: 2.5555556rem;
+  margin-top: 1.2777778rem;
+  margin-bottom: 0rem;
+}
+
+h4, .h4 {
+  font-size: 1rem;
+  line-height: 1.2777778rem;
+  margin-top: 1.2777778rem;
+  margin-bottom: 0rem;
+}
+
+h5, .h5 {
+  font-size: 1rem;
+  line-height: 1.2777778rem;
+  margin-top: 1.2777778rem;
+  margin-bottom: 0rem;
+}
+
+p, ul, ol, pre, table, blockquote {
+  margin-top: 0rem;
+  margin-bottom: 1.2777778rem;
+}
+
+ul ul, ol ol, ul ol, ol ul {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
+hr, .hr {
+  border: 1px solid;
+  margin: -1px 0;
+}
+a, b, i, strong, em, small, code {
+  line-height: 0;
+}
+sub, sup {
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+
+.clear:before,
+.clear:after {
+  content:' ';
+  display:table;
+}
+.clear:after {
+  clear:both;
+}
+.clear {
+  *zoom:1;
+}
+
+/*
+  HEADER 2017
+*/
+
+.header__wrapper {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.header__wrapper--blue {
+  background-color: $blue--900;
+}
+
+.logo__container {
+  float: left;
+  left: 1rem;
+  position: relative;
+  top: 2rem;
+}
+
+.nav__wrapper {
+  width: 100%;
+  ul {
+    @include flexbox();
+    @include justifyContent(flex-end);
+    list-style-type: none;
+    margin: 0;
+    padding: 2rem 1.5rem;
+    li {
+      a {
+        color: $blue--900;
+        display: block;
+        padding: 1rem;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      a.active  {
+        text-decoration: underline;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.header__wrapper--blue .nav__wrapper ul li a {
+  color: $white;
+  &.active {
+    color: $gold--400;
+  }
+}
+
+/*
+  Home 2017
+*/
+
+.hero-wrapper {
+  background: url('../img/home/home-page-hero.jpg') bottom right no-repeat;
+  background-size: 65%;
+  height: 500px;
+  position: relative;
+}
+.hero-wrapper__col-container {
+  max-width: 1366px;
+  width: 100%
+}
+.hero-wrapper__col-1 {
+  left: 0;
+  position: absolute;
+  text-align: left;
+  top: 50%;
+  transform: translate(2rem, -50%);
+  p {
+    font-size: 1.2rem;
+    padding: 1rem;
+    font-style: italic;
+    font-weight: bold;
+  }
+}
+
+.hero__message-container {
+
+}
+
+.home-bottom-container {
+  @include flexbox;
+  @include flex-wrap(wrap);
+  background-color: $blue--900;
+  color: $white;
+  max-width: 1366px;
+  padding: 3rem 2rem;
+  width: 100%;
+  h1 {
+    color: $white;
+  }
+  p {
+    padding-right: 2rem;
+  }
+}
+.home-bottom__h1-container {
+  background: url('../img/h1-pencil.svg') top right no-repeat;
+  display: block;
+  width: 100%;
+  h1.pencil {
+    border-bottom: solid 4px $gold--400;
+    margin-right: 60px;
+  }
+}
+.home-bottom-container__col-1,
+.home-bottom-container__col-2 {
+  @include flex(1);
+}
+
+/*
+  Buttons
+*/
+.button {
+  background-color: $blue--400;
+  border-radius: 100px;
+  border: solid 3px $gold--400;
+  color: $white;
+  display: inline-block;
+  padding: 1.5rem 2rem;
+  text-decoration: none;
+  &:hover {
+    background-color: lighten( $blue--400, 10% );
+  }
+}
+
+/*
+  Map
+*/
+#map {
+  height: 400px;
+  width: 100%;
+}
+
+
+/*
+  Inner Pages
+*/
+.inner-hero-wrapper {
+  border-top: solid 0.5rem $gold--400;
+  height: 200px;
+  position: relative;
+}
+.inner-hero-image__container {
+  height: 385px;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  img {
+    width: 100%;
+  }
+}
+.main-container {
+  background: #FFFFFF;
+  border-radius: 1rem;
+  border: 1px solid #979797;
+  margin: 0 auto;
+  max-width: 620px;
+  padding: 2rem 3rem;
+  position: relative;
+  width: 100%;
+  z-index: 101;
+  h1 {
+    color: $blue--900;
+  }
+  p {
+    font-size: 1.35rem;
+    line-height: 2.1rem;
+  }
+}
+
+
+
+
+/*
+  Footer
+*/
+.footer {
+  background:  #222;
+  color: $white;
+  padding: 2rem;
+  text-align: center;
+}
