@@ -47,12 +47,14 @@
   -ms-flex-pack: $justify;
 }
 
-$white: #ffffff;
+$white:     #ffffff;
 $blue--900: #1C2F4C;
 $blue--400: #203D6A;
 $gold--400: #FFC700;
+$gray:      #979797;
 
-
+$serif: 'Libre Baskerville', serif;
+$sans-serif: 'Source Sans Pro', sans-serif;
 
 @mixin desktop {
   @media only screen and (max-width: 60em) {
@@ -97,15 +99,15 @@ body {
   margin: 0;
   padding: 0;
   background: $white;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: $sans-serif;
   font-size: 1rem;
   line-height: 1.2777778rem;
 }
 
 h1, .h1 {
   display: block;
-  font-family: 'Libre Baskerville', serif;
-  font-size: 2rem;
+  font-family: $serif;
+  font-size: 1.7rem;
   line-height: 2.5555556rem;
   margin-bottom: 2.5555556rem;
   margin-top: 1.2777778rem;
@@ -122,7 +124,7 @@ h3, .h3 {
   font-size: 1.6111111rem;
   line-height: 2.5555556rem;
   margin-top: 1.2777778rem;
-  margin-bottom: 0rem;
+  margin-bottom: 1.2777778rem;
 }
 
 h4, .h4 {
@@ -302,9 +304,13 @@ sub {
   background-color: $blue--400;
   border-radius: 100px;
   border: solid 3px $gold--400;
+  box-shadow: 0 5px 5px rgba(#000, 0.5);
   color: $white;
+  cursor: pointer;
   display: inline-block;
+  min-width: 250px;
   padding: 1.5rem 2rem;
+  text-align: center;
   text-decoration: none;
   &:hover {
     background-color: lighten( $blue--400, 10% );
@@ -325,7 +331,7 @@ sub {
 */
 .inner-hero-wrapper {
   border-top: solid 0.5rem $gold--400;
-  height: 200px;
+  height: 100px;
   position: relative;
 }
 .inner-hero-image__container {
@@ -338,11 +344,11 @@ sub {
   }
 }
 .main-container {
-  background: #FFFFFF;
+  background: $white;
   border-radius: 1rem;
-  border: 1px solid #979797;
-  margin: 0 auto;
-  max-width: 620px;
+  border: 1px solid $gray;
+  margin: 0 auto 1rem auto;
+  max-width: 683px;
   padding: 2rem 3rem;
   position: relative;
   width: 100%;
@@ -356,7 +362,73 @@ sub {
   }
 }
 
+.two-col-container {
+  @include flexbox;
+  max-width: 683px;
+  margin: 0 auto;
+}
 
+.main-container--half {
+  @include flex(1);
+  background: $white;
+  border-radius: 1rem;
+  border: 1px solid $gray;
+  text-align: center;
+  margin: 0 1rem 1rem 0;
+  padding: 2rem 0;
+  &:last-child {
+    margin-right: 0;
+  }
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  p {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+  .subheading {
+    color: $blue--900;
+    font-weight: 900;
+    font-size: 1.25rem;
+  }
+}
+.h2-container {
+  text-align: center;
+  h2 {
+    color: $blue--900;
+    font-family: $serif;
+  }
+}
+/*
+  Contact Form
+*/
+label {
+  color: $blue--900;
+  display: block;
+  margin-bottom: .25rem;
+}
+label + .input-text {
+  margin-bottom: 1.5rem;
+}
+
+.input-text {
+  padding: 0.5rem;
+  border: solid 1px #979797;
+  border-radius: 0.25rem;
+  width: 370px;
+}
+
+.input-text--area  {
+  width: 470px;
+  min-height: 125px;
+}
+
+input[type=submit].button {
+  padding: 1rem;
+  margin: 1rem -0.25rem;
+}
 
 
 /*
